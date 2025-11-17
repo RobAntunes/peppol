@@ -1,0 +1,145 @@
+---
+import { LayoutDashboard, SendHorizontal, Users } from "@lucide/astro";
+---
+
+<section id="product" class="py-14 sm:py-16">
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+		<div
+			class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10"
+		>
+			<div>
+				<h2
+					class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900"
+				>
+					Designed for Swiss SMEs, not for IT projects.
+				</h2>
+				<p class="mt-3 text-base text-slate-600 max-w-2xl">
+					Whether you send 20 or 1,000 invoices per month, the portal
+					keeps you compliant with PEPPOL and Swiss regulations
+					without requiring an ERP system or custom integration.
+				</p>
+			</div>
+			<div
+				class="flex flex-wrap gap-3 text-xs text-slate-500"
+				aria-label="Key product scope"
+			>
+				<div class="flex items-center gap-1.5">
+					<span
+						class="h-1.5 w-1.5 rounded-full bg-blue-500"
+						aria-hidden="true"></span>
+					<span>Outbound invoices at launch</span>
+				</div>
+				<div class="flex items-center gap-1.5">
+					<span
+						class="h-1.5 w-1.5 rounded-full bg-slate-500"
+						aria-hidden="true"></span>
+					<span>Inbound &amp; API planned on roadmap</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid md:grid-cols-3 gap-6">
+			<div
+				class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+			>
+				<div
+					class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+				>
+					<LayoutDashboard size={24} />
+				</div>
+				<h3 class="text-lg font-semibold tracking-tight text-slate-900">
+					Self-service portal
+				</h3>
+				<p class="mt-2 text-base text-slate-600">
+					Create your account, configure company data, and start
+					submitting invoices via a clean web interface – no
+					onboarding project or IT team required.
+				</p>
+				<ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Company metadata: VAT ID, registration, address, language
+					</li>
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Dashboard with usage, status, and notifications
+					</li>
+				</ul>
+			</div>
+
+			<div
+				class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+			>
+				<div
+					class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+				>
+					<SendHorizontal size={24} />
+				</div>
+				<h3 class="text-lg font-semibold tracking-tight text-slate-900">
+					Flexible submission flows
+				</h3>
+				<p class="mt-2 text-base text-slate-600">
+					Start with manual entry and grow into uploads and API as
+					your volumes increase – all within the same portal and
+					compliance framework.
+				</p>
+				<ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Manual invoices with validation and instant status
+					</li>
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						File upload (XML, CSV, JSON – to be confirmed) for batches
+					</li>
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Future: API submissions for Premium plans
+					</li>
+				</ul>
+			</div>
+
+			<div
+				class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+			>
+				<div
+					class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+				>
+					<Users size={24} />
+				</div>
+				<h3 class="text-lg font-semibold tracking-tight text-slate-900">
+					Built for SMEs, backed by experts
+				</h3>
+				<p class="mt-2 text-base text-slate-600">
+					Taxera’s internal admin console monitors traffic, logs, and
+					billing behind the scenes, so you focus on your business,
+					not the plumbing.
+				</p>
+				<ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Proactive monitoring of access point &amp; API performance
+					</li>
+					<li class="flex gap-2">
+						<span
+							class="mt-1 h-1 w-1 rounded-full bg-blue-500"
+							aria-hidden="true"></span>
+						Manual reprocessing of failed invoices by Taxera staff
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

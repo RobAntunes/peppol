@@ -1,0 +1,167 @@
+<section
+	id="faq"
+	class="py-14 sm:py-16 border-t border-slate-200/70 bg-white"
+	aria-labelledby="faq-heading"
+>
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+		<div
+			class="grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] gap-10 items-start"
+		>
+			<div>
+				<h2
+					id="faq-heading"
+					class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900"
+				>
+					Answers to questions SMEs actually ask.
+				</h2>
+				<p class="mt-3 text-base text-slate-600 max-w-2xl">
+					peppol.taxera.tech is intentionally narrow in scope:
+					outbound PEPPOL e‑invoices for Swiss SMEs, built on Taxera’s
+					enterprise infrastructure. Here’s what that means in
+					practice.
+				</p>
+			</div>
+
+			<div class="space-y-3 text-sm">
+				<!-- FAQ items -->
+				<details
+					class="group rounded-2xl border border-slate-200 bg-white p-4 open:bg-slate-50"
+					open
+				>
+					<summary
+						class="flex cursor-pointer items-center justify-between gap-3 text-slate-900 font-semibold list-none"
+					>
+						<span>
+							Do I need an ERP system to use peppol.taxera.tech?
+						</span>
+						<span
+							class="flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 group-open:rotate-90 transition-transform"
+							aria-hidden="true"
+						>
+							<i
+								class="lucide lucide-chevron-right text-xs"
+								style="stroke-width:1.5"></i>
+						</span>
+					</summary>
+					<p class="mt-2 text-xs text-slate-600">
+						No. The portal is designed specifically for SMEs without
+						a PEPPOL‑enabled ERP. You work directly in the browser:
+						configure your company profile, enter invoices manually
+						or upload files (depending on plan), and track status in
+						the dashboard.
+					</p>
+				</details>
+
+				<details
+					class="group rounded-2xl border border-slate-200 bg-white p-4"
+				>
+					<summary
+						class="flex cursor-pointer items-center justify-between gap-3 text-slate-900 font-semibold list-none"
+					>
+						<span>
+							Which countries can I send PEPPOL invoices to?
+						</span>
+						<span
+							class="flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 group-open:rotate-90 transition-transform"
+							aria-hidden="true"
+						>
+							<i
+								class="lucide lucide-chevron-right text-xs"
+								style="stroke-width:1.5"></i>
+						</span>
+					</summary>
+					<p class="mt-2 text-xs text-slate-600">
+						The underlying Taxera access point connects to the
+						global PEPPOL network. As long as your customer is
+						registered in PEPPOL and the profile is supported, the
+						portal will route your invoice accordingly. Exact
+						country and profile support will be listed in the live
+						documentation.
+					</p>
+				</details>
+
+				<details
+					class="group rounded-2xl border border-slate-200 bg-white p-4"
+				>
+					<summary
+						class="flex cursor-pointer items-center justify-between gap-3 text-slate-900 font-semibold list-none"
+					>
+						<span>How are failed invoices handled?</span>
+						<span
+							class="flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 group-open:rotate-90 transition-transform"
+							aria-hidden="true"
+						>
+							<i
+								class="lucide lucide-chevron-right text-xs"
+								style="stroke-width:1.5"></i>
+						</span>
+					</summary>
+					<p class="mt-2 text-xs text-slate-600">
+						Technical and business‑rule errors are surfaced in the
+						portal with clear messages. In addition, Taxera’s
+						internal console allows staff to review logs and, where
+						appropriate, manually reprocess affected invoices.
+						Customers never see internal tooling – only concise,
+						actionable status updates.
+					</p>
+				</details>
+
+				<details
+					class="group rounded-2xl border border-slate-200 bg-white p-4"
+				>
+					<summary
+						class="flex cursor-pointer items-center justify-between gap-3 text-slate-900 font-semibold list-none"
+					>
+						<span>
+							What happens if I exceed my monthly invoice limit?
+						</span>
+						<span
+							class="flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 group-open:rotate-90 transition-transform"
+							aria-hidden="true"
+						>
+							<i
+								class="lucide lucide-chevron-right text-xs"
+								style="stroke-width:1.5"></i>
+						</span>
+					</summary>
+					<p class="mt-2 text-xs text-slate-600">
+						The dashboard shows real‑time usage against your plan
+						limit. Close to the limit, you’ll see prompts to
+						upgrade. Final behavior (soft overage vs. strict cap)
+						will be defined in the portal’s terms; in all cases,
+						you’ll see clear messaging before any blocking changes
+						take effect.
+					</p>
+				</details>
+
+				<details
+					class="group rounded-2xl border border-slate-200 bg-white p-4"
+				>
+					<summary
+						class="flex cursor-pointer items-center justify-between gap-3 text-slate-900 font-semibold list-none"
+					>
+						<span>
+							How are payments and cancellations managed?
+						</span>
+						<span
+							class="flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 group-open:rotate-90 transition-transform"
+							aria-hidden="true"
+						>
+							<i
+								class="lucide lucide-chevron-right text-xs"
+								style="stroke-width:1.5"></i>
+						</span>
+					</summary>
+					<p class="mt-2 text-xs text-slate-600">
+						Subscriptions renew monthly via a Swiss payment
+						provider. You can cancel or change your plan in the
+						portal, with changes applying to the next billing
+						period. Failed payments trigger reminders and, if
+						unresolved, an automatic suspension that you can lift by
+						updating payment details.
+					</p>
+				</details>
+			</div>
+		</div>
+	</div>
+</section>
