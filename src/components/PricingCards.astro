@@ -1,0 +1,207 @@
+---
+// Pricing cards component with three tiers
+---
+
+<section id="pricing" class="py-24 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2
+                class="text-3xl font-semibold text-slate-900 tracking-tight mb-4"
+            >
+                Transparent, simple pricing
+            </h2>
+            <p class="text-slate-500">
+                Choose a plan based on your invoice volume. No hidden fees.
+            </p>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <!-- Starter Plan -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-slate-200 flex flex-col"
+            >
+                <div class="mb-4">
+                    <h3
+                        class="text-sm font-semibold text-slate-900 uppercase tracking-wide"
+                    >
+                        Starter
+                    </h3>
+                    <div class="mt-4 flex items-baseline gap-1">
+                        <span class="text-3xl font-semibold text-slate-900"
+                            >CHF 19</span
+                        >
+                        <span class="text-sm text-slate-500">/month</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">
+                        For small businesses just starting out.
+                    </p>
+                </div>
+                <hr class="border-slate-100 my-6" />
+                <ul class="space-y-3 flex-1 mb-8" role="list">
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Up to <strong>50 invoices</strong>/mo</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Manual entry interface</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Dashboard access</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Basic support</span>
+                    </li>
+                </ul>
+                <a
+                    href="#"
+                    class="block w-full py-2 px-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-900 text-sm font-medium rounded-lg text-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Select Starter
+                </a>
+            </article>
+
+            <!-- Standard Plan (Most Popular) -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-blue-200 shadow-xl shadow-blue-900/5 relative flex flex-col"
+            >
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full"
+                >
+                    Most Popular
+                </div>
+                <div class="mb-4">
+                    <h3
+                        class="text-sm font-semibold text-blue-600 uppercase tracking-wide"
+                    >
+                        Standard
+                    </h3>
+                    <div class="mt-4 flex items-baseline gap-1">
+                        <span class="text-3xl font-semibold text-slate-900"
+                            >CHF 29</span
+                        >
+                        <span class="text-sm text-slate-500">/month</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">
+                        For growing companies needing file uploads.
+                    </p>
+                </div>
+                <hr class="border-slate-100 my-6" />
+                <ul class="space-y-3 flex-1 mb-8" role="list">
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Up to <strong>200 invoices</strong>/mo</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span
+                            >Manual entry &amp; <strong>File Upload</strong
+                            ></span
+                        >
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>XML, CSV support</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Priority dashboard</span>
+                    </li>
+                </ul>
+                <a
+                    href="#"
+                    class="block w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg text-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Select Standard
+                </a>
+            </article>
+
+            <!-- Premium Plan -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-slate-200 flex flex-col"
+            >
+                <div class="mb-4">
+                    <h3
+                        class="text-sm font-semibold text-slate-900 uppercase tracking-wide"
+                    >
+                        Premium
+                    </h3>
+                    <div class="mt-4 flex items-baseline gap-1">
+                        <span class="text-3xl font-semibold text-slate-900"
+                            >CHF 49</span
+                        >
+                        <span class="text-sm text-slate-500">/month</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">
+                        High volume with future API access.
+                    </p>
+                </div>
+                <hr class="border-slate-100 my-6" />
+                <ul class="space-y-3 flex-1 mb-8" role="list">
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Up to <strong>1,000 invoices</strong>/mo</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>All upload features</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Future API Access</span>
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <i
+                            data-lucide="check"
+                            class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0"
+                            aria-hidden="true"></i>
+                        <span>Priority email support</span>
+                    </li>
+                </ul>
+                <a
+                    href="#"
+                    class="block w-full py-2 px-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-900 text-sm font-medium rounded-lg text-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Select Premium
+                </a>
+            </article>
+        </div>
+    </div>
+</section>

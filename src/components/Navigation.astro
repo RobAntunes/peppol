@@ -1,0 +1,153 @@
+---
+// Navigation component with responsive mobile menu
+---
+
+<nav
+    class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60"
+    role="navigation"
+    aria-label="Main navigation"
+>
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a
+            href="/"
+            class="flex items-center gap-2 group"
+            aria-label="Taxera Peppol Portal Home"
+        >
+            <span
+                class="text-lg font-semibold text-slate-900 tracking-tighter group-hover:opacity-80 transition-opacity"
+                >taxera.</span
+            >
+            <span
+                class="bg-blue-50 text-blue-700 text-[10px] uppercase tracking-wide font-medium px-2 py-0.5 rounded-full border border-blue-100"
+                >Peppol Portal</span
+            >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div
+            class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500"
+        >
+            <a
+                href="#features"
+                class="hover:text-slate-900 transition-colors focus:outline-none focus:text-slate-900 focus:underline"
+                >Features</a
+            >
+            <a
+                href="#pricing"
+                class="hover:text-slate-900 transition-colors focus:outline-none focus:text-slate-900 focus:underline"
+                >Pricing</a
+            >
+            <a
+                href="#how-it-works"
+                class="hover:text-slate-900 transition-colors focus:outline-none focus:text-slate-900 focus:underline"
+                >How it works</a
+            >
+        </div>
+
+        <!-- Auth Buttons -->
+        <div class="flex items-center gap-3">
+            <a
+                href="#"
+                class="hidden md:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1"
+                >Log in</a
+            >
+            <a
+                href="#"
+                class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all shadow-sm hover:shadow-md ring-1 ring-slate-900/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+                Get started
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                id="mobile-menu-button"
+                class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+                aria-label="Toggle mobile menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-slate-200 bg-white"
+        role="menu"
+    >
+        <div class="px-6 py-4 space-y-3">
+            <a
+                href="#features"
+                class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2 focus:outline-none focus:text-slate-900 focus:underline"
+                role="menuitem">Features</a
+            >
+            <a
+                href="#how-it-works"
+                class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2 focus:outline-none focus:text-slate-900 focus:underline"
+                role="menuitem">How it works</a
+            >
+            <a
+                href="#pricing"
+                class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2 focus:outline-none focus:text-slate-900 focus:underline"
+                role="menuitem">Pricing</a
+            >
+            <hr class="border-slate-200" />
+            <a
+                href="#"
+                class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2 focus:outline-none focus:text-slate-900 focus:underline"
+                role="menuitem">Log in</a
+            >
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener("click", () => {
+            const isExpanded =
+                menuButton.getAttribute("aria-expanded") === "true";
+            menuButton.setAttribute("aria-expanded", (!isExpanded).toString());
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking a link
+        const menuLinks = mobileMenu.querySelectorAll("a");
+        menuLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener("keydown", (e) => {
+            if (
+                e.key === "Escape" &&
+                !mobileMenu.classList.contains("hidden")
+            ) {
+                mobileMenu.classList.add("hidden");
+                menuButton.setAttribute("aria-expanded", "false");
+                menuButton.focus();
+            }
+        });
+    }
+</script>

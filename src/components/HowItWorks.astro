@@ -1,0 +1,86 @@
+---
+// How it works section with steps and flow diagram
+import FlowDiagram from "./FlowDiagram.astro";
+---
+
+<section id="how-it-works" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Column: Steps -->
+            <div>
+                <h2
+                    class="text-3xl font-semibold text-slate-900 tracking-tight mb-6"
+                >
+                    Seamless submission workflow
+                </h2>
+                <p class="text-slate-500 mb-8">
+                    Whether you type it in or upload a file, our portal routes
+                    your invoice through Taxera's certified Peppol access point
+                    instantly.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4">
+                        <div
+                            class="shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold text-sm"
+                            aria-hidden="true"
+                        >
+                            1
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900">
+                                Submit Invoice
+                            </h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Enter details manually or upload a bulk file via
+                                the dashboard.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold text-sm"
+                            aria-hidden="true"
+                        >
+                            2
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900">
+                                Validation &amp; Routing
+                            </h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Taxera validates compliance and routes via our
+                                Access Point.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold text-sm"
+                            aria-hidden="true"
+                        >
+                            3
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900">
+                                Delivery Confirmation
+                            </h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Receive real-time status updates (Delivered,
+                                Acknowledged) in your dashboard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Flow Diagram -->
+            <FlowDiagram />
+        </div>
+    </div>
+</section>

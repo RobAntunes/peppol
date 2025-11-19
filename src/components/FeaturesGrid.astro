@@ -1,0 +1,81 @@
+---
+// Features grid component
+---
+
+<section id="features" class="py-20 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2
+                class="text-3xl font-semibold text-slate-900 tracking-tight mb-4"
+            >
+                Everything you need to stay compliant
+            </h2>
+            <p class="text-slate-500">
+                Designed for Swiss SMEs. We handle the complexity of the Peppol
+                network so you can focus on your business.
+            </p>
+        </div>
+
+        <!-- Feature Cards Grid -->
+        <div class="grid md:grid-cols-3 gap-8 text-center!">
+            <!-- Feature 1: Manual Entry -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div
+                    class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-6"
+                    aria-hidden="true"
+                >
+                    <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-semibold text-slate-900 mb-2">
+                    Manual Entry
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                    Perfect for low volume. Simply fill in the invoice details
+                    in our secure web form, and we format it for Peppol
+                    automatically.
+                </p>
+            </article>
+
+            <!-- Feature 2: File Upload -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div
+                    class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-6"
+                    aria-hidden="true"
+                >
+                    <i data-lucide="upload-cloud" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-semibold text-slate-900 mb-2">
+                    File Upload
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                    Have structured data? Upload XML or CSV files directly. We
+                    validate your data before it ever hits the network.
+                </p>
+            </article>
+
+            <!-- Feature 3: Swiss Compliance -->
+            <article
+                class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div
+                    class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-6"
+                    aria-hidden="true"
+                >
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-semibold text-slate-900 mb-2">
+                    Swiss Compliance
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                    Data is hosted in Switzerland and fully GDPR compliant. We
+                    maintain full audit trails for every transaction.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>

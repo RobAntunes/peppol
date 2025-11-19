@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 
-
 interface Props {
 	title?: string;
 	description?: string;
@@ -14,7 +13,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,13 +21,61 @@ const {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Google Fonts - Inter -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
-			href="https://unpkg.com/lucide-static/font/lucide.css"
 		/>
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Lucide Icons -->
+		<script src="https://unpkg.com/lucide@latest"></script>
+
+		<style>
+			body {
+				font-family: "Inter", sans-serif;
+				font-feature-settings: "ss01", "ss03", "cv01";
+			}
+
+			/* Custom Scrollbar */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+			::-webkit-scrollbar-track {
+				background: transparent;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #cbd5e1;
+				border-radius: 4px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #94a3b8;
+			}
+
+			/* Fade in animation */
+			@keyframes fade-in-up {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			.animate-fade-in-up {
+				animation: fade-in-up 0.6s ease-out;
+			}
+		</style>
 	</head>
-	<body class="h-full bg-slate-50 text-slate-900 antialiased">
+	<body
+		class="bg-white text-slate-600 antialiased selection:bg-blue-100 selection:text-blue-900"
+	>
 		<a
 			href="#main-content"
 			class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"
@@ -36,5 +83,16 @@ const {
 			Skip to main content
 		</a>
 		<slot />
+
+		<!-- Initialize Lucide Icons -->
+		<script>
+			declare const lucide: any;
+			lucide.createIcons({
+				attrs: {
+					strokeWidth: 1.5,
+				},
+			});
+		</script>
 	</body>
 </html>
+```

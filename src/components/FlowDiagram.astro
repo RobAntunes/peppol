@@ -1,0 +1,75 @@
+---
+// Visual flow diagram showing invoice submission process
+---
+
+<div
+    class="bg-slate-50 rounded-2xl border border-slate-200 p-8 relative"
+    role="img"
+    aria-label="Invoice submission flow diagram"
+>
+    <!-- Network Status Badge -->
+    <div
+        class="absolute top-0 right-0 -mt-4 -mr-4 bg-white p-4 rounded-xl shadow-lg border border-slate-100 hidden md:block"
+    >
+        <div class="flex items-center gap-3">
+            <div
+                class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                aria-hidden="true"
+            >
+            </div>
+            <span class="text-xs font-medium text-slate-600"
+                >Network Connected</span
+            >
+        </div>
+    </div>
+
+    <!-- Flow Steps -->
+    <div class="space-y-4">
+        <!-- Step 1: Invoice Data -->
+        <div
+            class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm flex justify-between items-center"
+        >
+            <span class="text-xs font-mono text-slate-500"
+                >invoice_data.xml</span
+            >
+            <i
+                data-lucide="file-code"
+                class="w-4 h-4 text-slate-400"
+                aria-hidden="true"></i>
+        </div>
+
+        <!-- Arrow Down -->
+        <div class="flex justify-center" aria-hidden="true">
+            <i data-lucide="arrow-down" class="w-4 h-4 text-slate-300"></i>
+        </div>
+
+        <!-- Step 2: Taxera Access Point -->
+        <div
+            class="bg-blue-600 p-4 rounded-lg shadow-sm text-white flex justify-between items-center"
+        >
+            <span class="text-xs font-medium">Taxera Access Point</span>
+            <i
+                data-lucide="server"
+                class="w-4 h-4 text-blue-200"
+                aria-hidden="true"></i>
+        </div>
+
+        <!-- Arrow Down -->
+        <div class="flex justify-center" aria-hidden="true">
+            <i data-lucide="arrow-down" class="w-4 h-4 text-slate-300"></i>
+        </div>
+
+        <!-- Step 3: Peppol Network -->
+        <div
+            class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm flex justify-between items-center"
+        >
+            <span class="text-xs font-medium text-slate-900"
+                >Peppol Network</span
+            >
+            <i
+                data-lucide="globe"
+                class="w-4 h-4 text-blue-600"
+                aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
