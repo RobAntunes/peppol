@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import AuthForm from "../components/AuthForm";
+---
+
+<Layout
+  title="Login – Taxera Peppol Portal"
+  description="Secure login to the Taxera Peppol portal for Swiss SMEs."
+>
+  <Navigation />
+
+  <main
+    id="main-content"
+    class="min-h-screen bg-gradient-to-b from-slate-50 via-slate-50 to-slate-100/80 pt-24 pb-16"
+  >
+    <section
+      class="h-[calc(100vh-80px)] max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center justify-center"
+    >
+      <div class="space-y-6 animate-fade-in-up">
+        <h1
+          class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900"
+        >
+          Sign in to your
+          <span class="text-blue-600">Taxera Peppol</span> workspace
+        </h1>
+
+        <p class="text-sm md:text-base text-slate-500 leading-relaxed max-w-xl">
+          Access your compliant Peppol e-invoicing portal, manage business
+          partners, and send structured invoices in line with Swiss and EU
+          requirements.
+        </p>
+
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+            <span>Secure, password-based access powered by Supabase Auth.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+            <span
+              >Hosted in the EU, aligned with Swiss SMEs’ compliance needs.</span
+            >
+          </li>
+        </ul>
+
+        <p class="text-[11px] text-slate-400">
+          Don&apos;t have access yet? Create an account on the right and
+          we&apos;ll guide you through onboarding.
+        </p>
+      </div>
+
+      <div class="animate-fade-in-up">
+        <AuthForm client:load />
+      </div>
+    </section>
+  </main>
+</Layout>
