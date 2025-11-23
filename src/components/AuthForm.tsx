@@ -8,6 +8,7 @@ export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [oauthLoading, setOauthLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,6 +36,37 @@ export default function AuthForm() {
       setError(
         'We could not create your account right now. Please check your details or try again in a moment.'
       );
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(false);
+    setOauthLoading(true);
+    setMessage(null);
+    setError(null);
+
+    try {
+      const target = getRedirectTarget();
+      const redirectTo = `${window.location.origin}${target}`;
+
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo,
+        },
+      });
+
+      if (error) {
+        setFriendlyError('sign-in', error.message);
+        setOauthLoading(false);
+      }
+      // On success, Supabase will redirect the browser to `redirectTo`
+    } catch (err: any) {
+      console.error('[auth:google-unexpected]', err);
+      setError(
+        'We could not reach Google sign-in right now. Please try again or use email and password.'
+      );
+      setOauthLoading(false);
     }
   };
 
@@ -84,6 +116,8 @@ export default function AuthForm() {
     }
   };
 
+  const isBusy = loading || oauthLoading;
+
   return (
     <div className="w-full max-w-md mx-auto bg-white/90 backdrop-blur-lg border border-slate-200/80 rounded-2xl shadow-xl shadow-slate-200/70 p-8">
       <div className="flex items-center justify-between mb-6">
@@ -93,7 +127,7 @@ export default function AuthForm() {
         <button
           type="button"
           onClick={() => setMode(mode === 'sign-in' ? 'sign-up' : 'sign-in')}
-          className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline"
+            className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline"
         >
           {mode === 'sign-in' ? 'Need an account?' : 'Already have an account?'}
         </button>
@@ -116,6 +150,22 @@ export default function AuthForm() {
           {message}
         </div>
       )}
+
+      <div className="space-y-3 mb-6">
+        <button
+          type="button"
+          onClick={handleGoogleSignIn}
+          disabled={isBusy}
+          className="inline-flex w-full items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {oauthLoading ? 'Connecting to Google…' : 'Continue with Google'}
+        </button>
+        <div className="flex items-center gap-3 text-[11px] text-slate-400">
+          <span className="h-px flex-1 bg-slate-200" />
+          <span>or continue with email</span>
+          <span className="h-px flex-1 bg-slate-200" />
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1.5">
@@ -158,7 +208,7 @@ export default function AuthForm() {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={isBusy}
           className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm shadow-blue-500/30 transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading
