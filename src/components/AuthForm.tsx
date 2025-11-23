@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
+import GoogleLogo from '../assets/google.svg';
 
 type Mode = 'sign-in' | 'sign-up';
 
@@ -156,9 +157,18 @@ export default function AuthForm() {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={isBusy}
-          className="inline-flex w-full items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {oauthLoading ? 'Connecting to Google…' : 'Continue with Google'}
+          <span className="inline-flex items-center justify-center rounded-sm bg-white">
+            <img
+              src={typeof GoogleLogo === 'string' ? GoogleLogo : GoogleLogo.src ?? ''}
+              alt="Google"
+              className="h-4 w-4"
+            />
+          </span>
+          <span>
+            {oauthLoading ? 'Connecting to Google…' : 'Continue with Google'}
+          </span>
         </button>
         <div className="flex items-center gap-3 text-[11px] text-slate-400">
           <span className="h-px flex-1 bg-slate-200" />
