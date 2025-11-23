@@ -1,6 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navigation from "../components/Navigation.astro";
+import  Layout from "../layouts/Layout.astro";
 import AuthForm from "../components/AuthForm";
 ---
 
@@ -8,14 +7,12 @@ import AuthForm from "../components/AuthForm";
   title="Login – Taxera Peppol Portal"
   description="Secure login to the Taxera Peppol portal for Swiss SMEs."
 >
-  <Navigation />
-
   <main
     id="main-content"
-    class="min-h-screen bg-gradient-to-b from-slate-50 via-slate-50 to-slate-100/80 pt-24 pb-16"
+    class="min-h-screen bg-gradient-to-b from-slate-50 via-slate-50 to-slate-100/80 pt-16 pb-16"
   >
     <section
-      class="h-[90vh] max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center justify-center"
+      class="h-[calc(100vh-140px)] max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center justify-center"
     >
       <div class="space-y-6 animate-fade-in-up">
         <h1
