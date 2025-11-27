@@ -12,6 +12,12 @@ export default function DashboardShell() {
   useEffect(() => {
     let isActive = true;
 
+    // Clean OAuth tokens from URL immediately if present
+    if (window.location.hash) {
+      const cleanUrl = window.location.pathname + window.location.search;
+      window.history.replaceState(null, '', cleanUrl);
+    }
+
     const checkSession = async () => {
       try {
         // Check sessionStorage cache first for faster load
