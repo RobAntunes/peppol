@@ -728,14 +728,12 @@ import { ViewTransitions } from "astro:transitions";
                                 type="button"
                                 class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
                             >
-                                <i data-lucide="save" class="w-4 h-4"></i>
-                                <span>Save draft</span>
+                              <span>Save draft</span>
                             </button>
                             <button
                                 type="submit"
                                 class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition-colors"
                             >
-                                <i data-lucide="send" class="w-4 h-4"></i>
                                 <span>Validate &amp; submit</span>
                             </button>
                         </div>
@@ -798,14 +796,14 @@ import { ViewTransitions } from "astro:transitions";
         </div>
 
         <script>
-            import { navigate } from 'astro:transitions/client';
-            
+            import { navigate } from "astro:transitions/client";
+
             // Re-initialize on every page load (including after view transitions)
-            document.addEventListener('astro:page-load', () => {
+            document.addEventListener("astro:page-load", () => {
                 // Track if form has been modified
                 let formModified = false;
                 const form = document.getElementById(
-                    "invoiceForm"
+                    "invoiceForm",
                 ) as HTMLFormElement;
                 const backButton = document.getElementById("backButton");
                 const confirmModal = document.getElementById("confirmModal");
@@ -836,7 +834,7 @@ import { ViewTransitions } from "astro:transitions";
                             }
                         } else {
                             // Navigate back immediately
-                            navigate('/dashboard');
+                            navigate("/dashboard");
                         }
                     });
                 }
@@ -845,7 +843,7 @@ import { ViewTransitions } from "astro:transitions";
                 if (discardButton) {
                     discardButton.addEventListener("click", () => {
                         formModified = false;
-                        navigate('/dashboard');
+                        navigate("/dashboard");
                     });
                 }
 
@@ -860,9 +858,11 @@ import { ViewTransitions } from "astro:transitions";
                 if (saveButton) {
                     saveButton.addEventListener("click", () => {
                         // TODO: Implement save functionality
-                        alert("Draft saved! (Save functionality to be implemented)");
+                        alert(
+                            "Draft saved! (Save functionality to be implemented)",
+                        );
                         formModified = false;
-                        navigate('/dashboard');
+                        navigate("/dashboard");
                     });
                 }
 
