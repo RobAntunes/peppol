@@ -1,0 +1,892 @@
+---
+import "../styles/global.css";
+import { FileText } from "@lucide/astro";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Taxera Peppol | New Invoice</title>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin=""
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <ViewTransitions />
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                font-feature-settings: "ss01", "ss03", "cv01";
+            }
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-white text-slate-600 antialiased selection:bg-blue-100 selection:text-blue-900"
+    >
+        <!-- Navigation -->
+        <nav
+            class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60"
+        >
+            <div
+                class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-4">
+                    <a href="/" class="flex items-center gap-2 group">
+                        <span
+                            class="text-lg font-semibold text-slate-900 tracking-tight group-hover:opacity-80 transition-opacity"
+                            >taxera.</span
+                        >
+                        <span
+                            class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md shadow-sm"
+                            >Peppol</span
+                        >
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a
+                        href="#"
+                        class="hidden md:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+                        >Log out</a
+                    >
+                    <button
+                        type="button"
+                        class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all shadow-sm hover:shadow-md ring-1 ring-slate-900/5 flex items-center gap-2"
+                    >
+                        <FileText size={16} />
+                        <span>Drafts</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <header
+            class="pt-28 pb-6 border-b border-slate-200 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-blue-50/40 via-white to-white"
+        >
+            <div
+                class="max-w-4xl mx-auto px-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+            >
+                <div>
+                    <button
+                        id="backButton"
+                        type="button"
+                        class="inline-flex items-center gap-1 relative -left-4 mb-8 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors group"
+                    >
+                        <i
+                            data-lucide="chevron-left"
+                            class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"
+                        ></i>
+                        <span>Back</span>
+                    </button>
+                    <h1
+                        class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900"
+                    >
+                        Create e-invoice
+                    </h1>
+                    <p class="text-base text-slate-500 mt-2">
+                        Enter all mandatory invoice details before submission to
+                        the Peppol network.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form -->
+        <main class="py-10 pb-16">
+            <div class="max-w-4xl mx-auto px-6">
+                <form id="invoiceForm" class="space-y-10">
+                    <!-- Invoice meta -->
+                    <section
+                        class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8"
+                    >
+                        <div
+                            class="flex items-start justify-between gap-4 mb-6"
+                        >
+                            <div>
+                                <h2
+                                    class="text-xl font-semibold tracking-tight text-slate-900"
+                                >
+                                    Invoice details
+                                </h2>
+                                <p class="text-base text-slate-500 mt-1">
+                                    Core identifiers and dates for this
+                                    document.
+                                </p>
+                            </div>
+                            <span
+                                class="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-full px-2.5 py-1"
+                            >
+                                <i
+                                    data-lucide="shield-check"
+                                    class="w-3.5 h-3.5 text-emerald-500"></i>
+                                <span> VAT-ready </span>
+                            </span>
+                        </div>
+
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+                        >
+                            <!-- 1. Invoice number -->
+                            <div>
+                                <label
+                                    for="invoiceNumber"
+                                    class="flex items-center justify-between mb-1.5"
+                                >
+                                    <span
+                                        class="text-sm font-medium text-slate-700"
+                                        >Invoice number</span
+                                    >
+                                    <span class="text-[11px] text-slate-400"
+                                        >Unique, sequential</span
+                                    >
+                                </label>
+                                <input
+                                    id="invoiceNumber"
+                                    name="invoiceNumber"
+                                    type="text"
+                                    required=""
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+
+                            <!-- 2. Issue date -->
+                            <div>
+                                <label
+                                    for="issueDate"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >Issue date</label
+                                >
+                                <input
+                                    id="issueDate"
+                                    name="issueDate"
+                                    type="date"
+                                    required=""
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+
+                            <!-- 16. Payment due date / terms -->
+                            <div>
+                                <label
+                                    for="dueDate"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >Payment due date</label
+                                >
+                                <input
+                                    id="dueDate"
+                                    name="dueDate"
+                                    type="date"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                                <p class="mt-1 text-xs text-slate-400">
+                                    Leave empty if using payment terms instead.
+                                </p>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="paymentTerms"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >Payment terms</label
+                                >
+                                <input
+                                    id="paymentTerms"
+                                    name="paymentTerms"
+                                    type="text"
+                                    placeholder="30 days net, 10 days 2% discount"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+
+                            <!-- 17. Invoice type code -->
+                            <div>
+                                <label
+                                    for="invoiceType"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >Invoice type code</label
+                                >
+                                <select
+                                    id="invoiceType"
+                                    name="invoiceType"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                >
+                                    <option value="380">Invoice (380)</option>
+                                    <option value="381"
+                                        >Credit note (381)</option
+                                    >
+                                    <option value="384"
+                                        >Corrected invoice (384)</option
+                                    >
+                                </select>
+                            </div>
+
+                            <!-- 19. Reference to corrected invoice -->
+                            <div>
+                                <label
+                                    for="correctedReference"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                >
+                                    Reference to corrected invoice
+                                </label>
+                                <input
+                                    id="correctedReference"
+                                    name="correctedReference"
+                                    type="text"
+                                    placeholder="Original invoice number"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+
+                            <!-- 18. Delivery / service date -->
+                            <div class="sm:col-span-2">
+                                <label
+                                    for="serviceDate"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                >
+                                    Delivery / service date (if different)
+                                </label>
+                                <input
+                                    id="serviceDate"
+                                    name="serviceDate"
+                                    type="date"
+                                    class="w-full sm:w-1/2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+
+                            <!-- 20. Legal mention / scheme note -->
+                            <div class="sm:col-span-2">
+                                <label
+                                    for="legalMention"
+                                    class="block mb-1.5 text-sm font-medium text-slate-700"
+                                >
+                                    Legal mention / special scheme note
+                                </label>
+                                <textarea
+                                    id="legalMention"
+                                    name="legalMention"
+                                    rows="2"
+                                    placeholder="e.g. Reverse charge; VAT exempt -   art ?? LIVA"
+                                    class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Parties -->
+                    <section
+                        class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8"
+                    >
+                        <div
+                            class="flex items-start justify-between gap-4 mb-6"
+                        >
+                            <div>
+                                <h2
+                                    class="text-xl font-semibold tracking-tight text-slate-900"
+                                >
+                                    Parties
+                                </h2>
+                                <p class="text-base text-slate-500 mt-1">
+                                    Seller and buyer identification and
+                                    addresses.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Seller -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center"
+                                    >
+                                        <i
+                                            data-lucide="building-2"
+                                            class="w-4 h-4 text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-sm font-medium text-slate-900"
+                                        >
+                                            Seller / Supplier
+                                        </h3>
+                                        <p class="text-xs text-slate-500">
+                                            Legal information and VAT ID.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Seller legal name -->
+                                <div class="mb-4">
+                                    <label
+                                        for="sellerName"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        Legal name
+                                    </label>
+                                    <input
+                                        id="sellerName"
+                                        name="sellerName"
+                                        type="text"
+                                        required=""
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 4. Seller VAT ID -->
+                                <div class="mb-4">
+                                    <label
+                                        for="sellerVat"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        VAT identification number
+                                    </label>
+                                    <input
+                                        id="sellerVat"
+                                        name="sellerVat"
+                                        type="text"
+                                        placeholder="CHE-123.456.789 MWST"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 5. Seller address -->
+                                <div>
+                                    <label
+                                        for="sellerAddress"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        Legal address
+                                    </label>
+                                    <textarea
+                                        id="sellerAddress"
+                                        name="sellerAddress"
+                                        rows="3"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Buyer -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center"
+                                    >
+                                        <i
+                                            data-lucide="user-square-2"
+                                            class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-sm font-medium text-slate-900"
+                                        >
+                                            Buyer /
+                                        </h3>
+                                        <p class="text-xs text-slate-500">
+                                            B2B or B2C recipient details.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- 6. Buyer legal name -->
+                                <div class="mb-4">
+                                    <label
+                                        for="buyerName"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        Legal name
+                                    </label>
+                                    <input
+                                        id="buyerName"
+                                        name="buyerName"
+                                        type="text"
+                                        required=""
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 7. Buyer VAT ID -->
+                                <div class="mb-4">
+                                    <label
+                                        for="buyerVat"
+                                        class="flex items-center justify-between mb-1.5"
+                                    >
+                                        <span
+                                            class="text-sm font-medium text-slate-700"
+                                        >
+                                            VAT identification number
+                                        </span>
+                                        <span class="text-[11px] text-slate-400"
+                                            >Required for B2B / intra‑EU</span
+                                        >
+                                    </label>
+                                    <input
+                                        id="buyerVat"
+                                        name="buyerVat"
+                                        type="text"
+                                        placeholder="EU VAT or Swiss UID"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 8. Buyer address -->
+                                <div>
+                                    <label
+                                        for="buyerAddress"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        Address
+                                    </label>
+                                    <textarea
+                                        id="buyerAddress"
+                                        name="buyerAddress"
+                                        rows="3"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Line items & VAT -->
+                    <section
+                        class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8"
+                    >
+                        <div
+                            class="flex items-start justify-between gap-4 mb-6"
+                        >
+                            <div>
+                                <h2
+                                    class="text-xl font-semibold tracking-tight text-slate-900"
+                                >
+                                    Line items &amp; VAT
+                                </h2>
+                                <p class="text-base text-slate-500 mt-1">
+                                    Describe goods or services, quantities,
+                                    prices and VAT.
+                                </p>
+                            </div>
+                            <button
+                                type="button"
+                                class="hidden sm:inline-flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-1"
+                            >
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                <span>Add line</span>
+                            </button>
+                        </div>
+
+                        <!-- 9, 10: Line item (single row placeholder) -->
+                        <div class="space-y-3 mb-6">
+                            <div
+                                class="flex items-center justify-between text-[11px] text-slate-400 px-3"
+                            >
+                                <span class="w-full sm:w-1/2">Description</span>
+                                <div
+                                    class="hidden sm:flex w-1/2 justify-end gap-6"
+                                >
+                                    <span class="w-16 text-right">Qty</span>
+                                    <span class="w-24 text-right"
+                                        >Unit price</span
+                                    >
+                                    <span class="w-24 text-right"
+                                        >Line total</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-3 sm:p-4"
+                            >
+                                <div
+                                    class="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start"
+                                >
+                                    <div class="w-full sm:flex-1">
+                                        <input
+                                            type="text"
+                                            name="itemDescription"
+                                            placeholder="Description of goods or services"
+                                            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        />
+                                    </div>
+                                    <div
+                                        class="flex w-full sm:w-auto gap-2 sm:gap-3"
+                                    >
+                                        <input
+                                            type="number"
+                                            step="0.0001"
+                                            min="0"
+                                            name="itemQuantity"
+                                            placeholder="Qty"
+                                            class="w-24 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-right text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        />
+                                        <input
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            name="itemUnitPrice"
+                                            placeholder="Unit"
+                                            class="w-28 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-right text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                type="button"
+                                class="inline-flex sm:hidden items-center gap-1.5 text-xs text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-1"
+                            >
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                <span>Add another line</span>
+                            </button>
+                        </div>
+
+                        <!-- 11- 15: Totals, VAT and currency -->
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-slate-200 pt-6 mt-4"
+                        >
+                            <!-- Left: VAT details -->
+                            <div class="space-y-4">
+                                <!-- 12. VAT rate(s) -->
+                                <div>
+                                    <label
+                                        for="vatRate"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        VAT rate applied
+                                    </label>
+                                    <select
+                                        id="vatRate"
+                                        name="vatRate"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    >
+                                        <option value="0"
+                                            >0% (exempt / reverse charge)</option
+                                        >
+                                        <option value="2.6"
+                                            >2.6% (reduced)</option
+                                        >
+                                        <option value="3.8"
+                                            >3.8% (accommodation)</option
+                                        >
+                                        <option value="8.1"
+                                            >8.1% (standard)</option
+                                        >
+                                    </select>
+                                </div>
+
+                                <!-- 13. VAT amount per rate -->
+                                <div>
+                                    <label
+                                        for="vatAmount"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        VAT amount (this rate)
+                                    </label>
+                                    <input
+                                        id="vatAmount"
+                                        name="vatAmount"
+                                        type="number"
+                                        step="0.01"
+                                        min="0"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-right text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 15. Currency -->
+                                <div>
+                                    <label
+                                        for="currency"
+                                        class="block mb-1.5 text-sm font-medium text-slate-700"
+                                    >
+                                        Currency
+                                    </label>
+                                    <select
+                                        id="currency"
+                                        name="currency"
+                                        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    >
+                                        <option value="CHF"
+                                            >CHF - Swiss franc</option
+                                        >
+                                        <option value="EUR">EUR - Euro</option>
+                                        <option value="USD"
+                                            >USD - US dollar</option
+                                        >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Right: summary amounts -->
+                            <div
+                                class="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-3"
+                            >
+                                <!-- 11. Tax base -->
+                                <div
+                                    class="flex items-center justify-between gap-4"
+                                >
+                                    <label
+                                        for="taxBase"
+                                        class="text-sm font-medium text-slate-700"
+                                    >
+                                        Tax base (net amount)
+                                    </label>
+                                    <input
+                                        id="taxBase"
+                                        name="taxBase"
+                                        type="number"
+                                        step="0.01"
+                                        min="0"
+                                        class="w-32 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-right text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 13. VAT amount display (total) -->
+                                <div
+                                    class="flex items-center justify-between gap-4"
+                                >
+                                    <label
+                                        for="vatAmountTotal"
+                                        class="text-sm text-slate-700"
+                                    >
+                                        VAT amount (all rates)
+                                    </label>
+                                    <input
+                                        id="vatAmountTotal"
+                                        name="vatAmountTotal"
+                                        type="number"
+                                        step="0.01"
+                                        min="0"
+                                        class="w-32 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-right text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+
+                                <!-- 14. Grand total -->
+                                <div
+                                    class="pt-3 mt-1 border-t border-slate-200"
+                                >
+                                    <div
+                                        class="flex items-center justify-between gap-4"
+                                    >
+                                        <span
+                                            class="text-sm font-semibold text-slate-900"
+                                            >Grand total amount</span
+                                        >
+                                        <input
+                                            id="grandTotal"
+                                            name="grandTotal"
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            class="w-32 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-right text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        />
+                                    </div>
+                                    <p class="mt-1 text-xs text-slate-500">
+                                        Net + VAT = total owed.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Actions -->
+                    <section
+                        class="flex flex-col sm:flex-row items-center justify-between gap-4"
+                    >
+                        <div
+                            class="flex items-center gap-2 text-xs text-slate-500"
+                        >
+                            <i
+                                data-lucide="info"
+                                class="w-3.5 h-3.5 text-slate-400"></i>
+                            <span
+                                >All mandatory Peppol core fields are present on
+                                this form.</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <button
+                                type="button"
+                                class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+                            >
+                                <i data-lucide="save" class="w-4 h-4"></i>
+                                <span>Save draft</span>
+                            </button>
+                            <button
+                                type="submit"
+                                class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition-colors"
+                            >
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Validate &amp; submit</span>
+                            </button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </main>
+
+        <!-- Confirmation Modal -->
+        <div
+            id="confirmModal"
+            class="hidden fixed inset-0 z-[100] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4"
+        >
+            <div
+                class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-fade-in-up"
+            >
+                <div class="flex items-start gap-4 mb-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center"
+                    >
+                        <i
+                            data-lucide="alert-triangle"
+                            class="w-5 h-5 text-amber-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-1">
+                            Unsaved changes
+                        </h3>
+                        <p class="text-sm text-slate-600">
+                            You have unsaved changes in the form. Do you want to
+                            save them before leaving?
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                    <button
+                        id="discardButton"
+                        type="button"
+                        class="flex-1 inline-flex justify-center items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+                    >
+                        Discard
+                    </button>
+                    <button
+                        id="cancelButton"
+                        type="button"
+                        class="flex-1 inline-flex justify-center items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        id="saveButton"
+                        type="button"
+                        class="flex-1 inline-flex justify-center items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition-colors"
+                    >
+                        <i data-lucide="save" class="w-4 h-4"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            import { navigate } from 'astro:transitions/client';
+            
+            // Re-initialize on every page load (including after view transitions)
+            document.addEventListener('astro:page-load', () => {
+                // Track if form has been modified
+                let formModified = false;
+                const form = document.getElementById(
+                    "invoiceForm"
+                ) as HTMLFormElement;
+                const backButton = document.getElementById("backButton");
+                const confirmModal = document.getElementById("confirmModal");
+                const discardButton = document.getElementById("discardButton");
+                const cancelButton = document.getElementById("cancelButton");
+                const saveButton = document.getElementById("saveButton");
+
+                // Track form changes
+                if (form) {
+                    form.addEventListener("input", () => {
+                        formModified = true;
+                    });
+
+                    form.addEventListener("change", () => {
+                        formModified = true;
+                    });
+                }
+
+                // Handle back button click
+                if (backButton) {
+                    backButton.addEventListener("click", () => {
+                        if (formModified) {
+                            // Show confirmation modal
+                            confirmModal?.classList.remove("hidden");
+                            // Reinitialize lucide icons for the modal
+                            if (typeof lucide !== "undefined") {
+                                lucide.createIcons();
+                            }
+                        } else {
+                            // Navigate back immediately
+                            navigate('/dashboard');
+                        }
+                    });
+                }
+
+                // Handle discard button
+                if (discardButton) {
+                    discardButton.addEventListener("click", () => {
+                        formModified = false;
+                        navigate('/dashboard');
+                    });
+                }
+
+                // Handle cancel button
+                if (cancelButton) {
+                    cancelButton.addEventListener("click", () => {
+                        confirmModal?.classList.add("hidden");
+                    });
+                }
+
+                // Handle save button
+                if (saveButton) {
+                    saveButton.addEventListener("click", () => {
+                        // TODO: Implement save functionality
+                        alert("Draft saved! (Save functionality to be implemented)");
+                        formModified = false;
+                        navigate('/dashboard');
+                    });
+                }
+
+                // Close modal on escape key
+                const handleEscape = (e: KeyboardEvent) => {
+                    if (
+                        e.key === "Escape" &&
+                        confirmModal &&
+                        !confirmModal.classList.contains("hidden")
+                    ) {
+                        confirmModal.classList.add("hidden");
+                    }
+                };
+                document.addEventListener("keydown", handleEscape);
+
+                // Close modal on backdrop click
+                if (confirmModal) {
+                    confirmModal.addEventListener("click", (e) => {
+                        if (e.target === confirmModal) {
+                            confirmModal.classList.add("hidden");
+                        }
+                    });
+                }
+            });
+        </script></body
+    >
+</html>
